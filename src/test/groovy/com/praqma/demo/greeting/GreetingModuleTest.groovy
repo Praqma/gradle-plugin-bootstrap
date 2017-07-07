@@ -24,7 +24,7 @@ class GreetingModuleTest {
         // Prepare build.gradle
         build_gradle = testProjectDir.newFile('build.gradle') << """\
             plugins {
-                id "demo"
+                id "com.praqma.demo.DemoPlugin"
             }""".stripIndent()
     }
 

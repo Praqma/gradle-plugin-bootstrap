@@ -1,32 +1,108 @@
+// * * * * * * * * * * * *
 // Plugins
-// -------
+// * * * * * * * * * * * *
 
 plugins {
     id 'groovy'
     id 'java-gradle-plugin'
+
+    // Publishing publicly
+    id 'com.gradle.plugin-publish' version '0.9.7'
+
+    // Publishing to Artifactory
+    id 'com.jfrog.artifactory' version '4.4.18'
+    id 'maven-publish'
 }
 
+// * * * * * * * * * * * *
 // Dependencies
-// ------------
+// * * * * * * * * * * * *
 
 repositories {
     jcenter()
 }
 
 dependencies {
-    compile gradleApi()
+    compile     gradleApi()
     testCompile gradleTestKit()
     testCompile 'junit:junit:4+'
 }
 
-// Configuration
-// -------------
+// * * * * * * * * * * * *
+// Project configuration
+// * * * * * * * * * * * *
 
-group 'com.praqma'
-version '1.0'
+project.description     = 'Demo plugin to use as a starting point for custom plugin development'
+project.group           = 'com.praqma'
+project.version         = '1.0.0'
 
+project.ext.pluginId    = 'com.praqma.demo.DemoPlugin'
+project.ext.scm         = 'scm:git@github.com:Praqma/gradle-plugin-bootstrap.git'
+project.ext.url         = 'https://github.com/Praqma/gradle-plugin-bootstrap'
+
+// Configuration for: java-grade-plugin
+gradlePlugin {
+    plugins {
+        demoPlugin {
+            id = project.pluginId
+            implementationClass = 'com.praqma.demo.DemoPlugin'
+        }
+    }
+}
+
+// * * * * * * * * * * * *
 // Publishing
-// -------------
+// * * * * * * * * * * * *
 
-// Consult the accompanied blog post on publishing the plugin.
-// A link can be found in the README file.
+/* Consult the accompanied blog post for information on publishing the plugin.
+ * A link can be found in the README file.
+ * */
+
+// Publishing to plugins.gradle.org
+// --------------------------------
+
+// Configuration for: com.gradle.plugin-publish
+pluginBundle {
+    website = project.url
+    vcsUrl = project.scm
+    tags = ['demo', 'example', 'quickstart']
+
+    plugins {
+        demoPlugin {
+            id = project.pluginId
+            displayName = 'Gradle Multi Git plugin'
+            description = project.description
+        }
+    }
+}
+
+// Publishing to Artifactory
+// -------------------------
+
+// Configuration for com.jfrog.artifactory
+artifactory {
+    contextUrl = "http://devops.acmeindustries.com/artifactory"
+    publish {
+        repository {
+            repoKey     = 'plugins-release'
+            username    = 'joe'             // Note: Please do not actually store credentials in the build.gradle file
+            password    = 's3cr3t-p4ss'
+            maven       = true
+        }
+        defaults{
+            publications("pluginPublication")
+        }
+    }
+}
+
+// Plugin publication
+publishing {
+    publications{
+        pluginPublication(MavenPublication){
+            from        components.java
+            groupId     project.group
+            artifactId  project.pluginId
+            version     project.version
+        }
+    }
+}
