@@ -4,7 +4,6 @@
 plugins {
     id 'groovy'
     id 'java-gradle-plugin'
-    id 'com.jfrog.artifactory' version "4.4.18"
 }
 
 // Dependencies
@@ -25,3 +24,9 @@ dependencies {
 
 group 'com.praqma'
 version '1.0'
+
+// Publishing
+// -------------
+
+// Consult the accompanied blog post on publishing the plugin.
+// A link can be found in the README file.
