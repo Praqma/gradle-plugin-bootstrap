@@ -69,9 +69,9 @@ pluginBundle {
 
     plugins {
         demoPlugin {
-            id = project.pluginId
-            displayName = 'Gradle Multi Git plugin'
+            displayName = 'Demo Custom Gradle Plugin '
             description = project.description
+            id          = project.pluginId
         }
     }
 }
