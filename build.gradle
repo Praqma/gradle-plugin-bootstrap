@@ -36,6 +36,7 @@ project.description     = 'Demo plugin to use as a starting point for custom plu
 project.group           = 'com.praqma'
 project.version         = '1.0.0'
 
+project.ext.name        = 'demo'
 project.ext.pluginId    = 'com.praqma.demo.DemoPlugin'
 project.ext.scm         = 'scm:git@github.com:Praqma/gradle-plugin-bootstrap.git'
 project.ext.url         = 'https://github.com/Praqma/gradle-plugin-bootstrap'
@@ -97,11 +98,11 @@ artifactory {
 
 // Plugin publication
 publishing {
-    publications{
-        pluginPublication(MavenPublication){
+    publications {
+        pluginPublication (MavenPublication) {
             from        components.java
             groupId     project.group
-            artifactId  project.pluginId
+            artifactId  project.name
             version     project.version
         }
     }
