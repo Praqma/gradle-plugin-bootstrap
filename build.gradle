@@ -40,7 +40,7 @@ project.ext.pluginId    = 'com.praqma.demo.DemoPlugin'
 project.ext.scm         = 'scm:git@github.com:Praqma/gradle-plugin-bootstrap.git'
 project.ext.url         = 'https://github.com/Praqma/gradle-plugin-bootstrap'
 
-// Configuration for: java-grade-plugin
+// Configuration for: java-gradle-plugin
 gradlePlugin {
     plugins {
         demoPlugin {
