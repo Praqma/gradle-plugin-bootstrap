@@ -90,7 +90,7 @@ artifactory {
             maven       = true
         }
         defaults{
-            publications("pluginPublication")
+            publications("pluginPublication")    // Publication defined below
         }
     }
 }
