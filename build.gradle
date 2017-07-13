@@ -86,7 +86,7 @@ artifactory {
         repository {
             repoKey     = 'plugins-release'
             username    = 'joe'             // Note: Please do not actually store credentials in the build.gradle file
-            password    = 's3cr3t-p4ss'
+            password    = 's3cr3t-p4ss'     // Inject them as environment variables or via your user Gradle properties 
             maven       = true
         }
         defaults{
