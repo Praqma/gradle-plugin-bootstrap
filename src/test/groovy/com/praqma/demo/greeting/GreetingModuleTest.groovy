@@ -77,7 +77,6 @@ class GreetingModuleTest {
     @Test
     public void greetingTask() {
         build_gradle.append("""
-            import com.praqma.demo.greeting.GreetingTask
             task myTask(type: GreetingTask) {
                 message = "Ahoy"
                 target = "William"

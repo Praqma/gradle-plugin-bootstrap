@@ -18,6 +18,13 @@ class GreetingModule {
         project.extensions.create("greeting", GreetingExtension)
 
         /*
+        * Clever trick so users don't have to reference a custom task class by its fully qualified name.
+        * Reference:
+        * https://discuss.gradle.org/t/how-to-create-custom-gradle-task-type-and-not-have-to-specify-full-path-to-type-in-build-gradle/6059/4
+        */
+        project.ext.GreetingTask = GreetingTask
+
+        /*
         * A task that uses an extension for configuration.
         * Reference:
         * https://docs.gradle.org/3.5/userguide/custom_plugins.html#sec:getting_input_from_the_build
