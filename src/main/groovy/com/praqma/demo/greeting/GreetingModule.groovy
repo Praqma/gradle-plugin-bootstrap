@@ -51,7 +51,7 @@ class GreetingModule {
             description = "Greets the user. Target configured through properties."
 
             doLast {
-                String target = project.hasProperty("target") ? project.target : "user"
+                String target = project.findProperty("target") ?: "user"
                 println "Hello, $target!"
             }
         }
