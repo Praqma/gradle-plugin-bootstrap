@@ -55,9 +55,8 @@ gradlePlugin {
 // Publishing
 // * * * * * * * * * * * *
 
-/* Consult the accompanied blog post for information on publishing the plugin.
- * A link can be found in the README file.
- * */
+// Consult the accompanied blog post for information on publishing the plugin.
+// A link can be found in the README file.
 
 // Publishing to plugins.gradle.org
 // --------------------------------
@@ -82,16 +81,16 @@ pluginBundle {
 
 // Configuration for com.jfrog.artifactory
 artifactory {
-    contextUrl = "http://devops.acmeindustries.com/artifactory"
+    contextUrl = project.rtfUrl
     publish {
         repository {
-            repoKey     = 'plugins-release'
-            username    = 'joe'             // Note: Please do not actually store credentials in the build.gradle file
-            password    = 's3cr3t-p4ss'     // Inject them as environment variables or via your user Gradle properties 
+            repoKey     = project.rtfRepo
+            username    = project.rtfUser
+            password    = project.rtfSecret
             maven       = true
         }
         defaults{
-            publications("pluginPublication")    // Publication defined below
+            publications("pluginPublication") // Publication defined below
         }
     }
 }
