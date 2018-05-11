@@ -10,8 +10,7 @@ import static org.gradle.testkit.runner.TaskOutcome.*
 /**
  * Contains functional tests that use the GradleRunner to run the plugin's task in a controlled environment.
  * Reference:
- * https://docs.gradle.org/3.5/userguide/test_kit.html#sec:functional_testing_with_the_gradle_runner
- * Example 45.3
+ * https://docs.gradle.org/4.6/userguide/test_kit.html#sec:functional_testing_with_the_gradle_runner
  */
 class GreetingModuleTest {
     @Rule

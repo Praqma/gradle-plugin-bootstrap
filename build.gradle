@@ -7,10 +7,9 @@ plugins {
     id 'java-gradle-plugin'
 
     // Publishing publicly
-    id 'com.gradle.plugin-publish' version '0.9.7'
+    id 'com.gradle.plugin-publish' version '0.9.10'
 
     // Publishing to Artifactory
-    id 'com.jfrog.artifactory' version '4.4.18'
     id 'maven-publish'
 }
 
@@ -34,7 +33,7 @@ dependencies {
 
 project.description     = 'Demo plugin to use as a starting point for custom plugin development'
 project.group           = 'com.praqma'
-project.version         = '1.0.0'
+project.version         = '1.1.0'
 
 project.ext.name        = 'demo'
 project.ext.pluginId    = 'com.praqma.demo.DemoPlugin'
@@ -79,23 +78,7 @@ pluginBundle {
 // Publishing to Artifactory
 // -------------------------
 
-// Configuration for com.jfrog.artifactory
-artifactory {
-    contextUrl = project.rtfUrl
-    publish {
-        repository {
-            repoKey     = project.rtfRepo
-            username    = project.rtfUser
-            password    = project.rtfSecret
-            maven       = true
-        }
-        defaults{
-            publications("pluginPublication") // Publication defined below
-        }
-    }
-}
-
-// Plugin publication
+// Configures the publication to push, and the repository to push to
 publishing {
     publications {
         pluginPublication (MavenPublication) {
@@ -103,6 +86,15 @@ publishing {
             groupId     project.group
             artifactId  project.name
             version     project.version
+        }
+    }
+    repositories {
+        maven {
+            url project.rtfUrl
+            credentials {
+                username project.rtfUser
+                password project.rtfSecret
+            }
         }
     }
 }

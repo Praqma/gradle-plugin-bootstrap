@@ -8,8 +8,7 @@ import org.gradle.api.tasks.TaskAction
 /**
  * A custom task type, allows projects to create tasks of type 'GreetingTask'
  * Reference:
- * https://docs.gradle.org/3.3/userguide/more_about_tasks.html#sec:task_input_output_annotations
- * Example 19.23
+ * https://docs.gradle.org/4.6/userguide/more_about_tasks.html#sec:task_input_output_annotations
  */
 class GreetingTask extends DefaultTask {
     @Internal

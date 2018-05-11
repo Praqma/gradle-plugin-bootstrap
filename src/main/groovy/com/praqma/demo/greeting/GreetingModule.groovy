@@ -3,17 +3,16 @@ package com.praqma.demo.greeting
 import org.gradle.api.Project
 
 /**
- * The module isn't anything Gradle specific.
+ * The "module" isn't anything Gradle specific.
  * It's just a way of grouping tasks and configuration that share a certain theme.
- * The module's 'load' method is called in the plugin's entry point at {@link com.praqma.demo.DemoPlugin}
+ * The module's "load" method is called in the plugin's entry point at {@link com.praqma.demo.DemoPlugin}
  */
 class GreetingModule {
     static void load(Project project) {
         /*
         * Register a 'greeting' extension, with the properties defined in GreetingExtension
         * Reference:
-        * https://docs.gradle.org/3.5/userguide/custom_plugins.html#sec:getting_input_from_the_build
-        * Example 41.2
+        * https://docs.gradle.org/4.6/userguide/custom_plugins.html#sec:getting_input_from_the_build
         */
         project.extensions.create("greeting", GreetingExtension)
 
@@ -27,8 +26,7 @@ class GreetingModule {
         /*
         * A task that uses an extension for configuration.
         * Reference:
-        * https://docs.gradle.org/3.5/userguide/custom_plugins.html#sec:getting_input_from_the_build
-        * Example 41.2
+        * https://docs.gradle.org/4.6/userguide/custom_plugins.html#sec:getting_input_from_the_build
         */
         project.task('helloWorld') {
             group = "Greeting"
@@ -43,15 +41,14 @@ class GreetingModule {
         /*
         * A task using a project property for configuration.
         * Reference:
-        * https://docs.gradle.org/3.5/userguide/build_environment.html#sec:gradle_properties_and_system_properties
-        * Example 12.1
+        * https://docs.gradle.org/4.6/userguide/build_environment.html#sec:gradle_configuration_properties
         */
         project.task('helloTarget') {
             group = "Greeting"
             description = "Greets the user. Target configured through properties."
 
             doLast {
-                String target = project.findProperty("target") ?: "user"
+                String target = project.findProperty("target") ?: "default-user"
                 println "Hello, $target!"
             }
         }

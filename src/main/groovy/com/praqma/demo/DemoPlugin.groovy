@@ -7,8 +7,7 @@ import org.gradle.api.Project
 /**
  * The plugin's entry point.
  * Reference:
- * https://docs.gradle.org/3.5/userguide/custom_plugins.html#sec:writing_a_simple_plugin
- * Example 41.1
+ * https://docs.gradle.org/4.6/userguide/custom_plugins.html#sec:writing_a_simple_plugin
  */
 public class DemoPlugin implements Plugin<Project>{
 
