@@ -12,7 +12,7 @@ class GreetingModule {
         /*
         * Register a 'greeting' extension, with the properties defined in GreetingExtension
         * Reference:
-        * https://docs.gradle.org/4.6/userguide/custom_plugins.html#sec:getting_input_from_the_build
+        * https://docs.gradle.org/5.5.1/userguide/build_environment.html#sec:gradle_configuration_properties
         */
         project.extensions.create("greeting", GreetingExtension)
 
@@ -26,7 +26,7 @@ class GreetingModule {
         /*
         * A task that uses an extension for configuration.
         * Reference:
-        * https://docs.gradle.org/4.6/userguide/custom_plugins.html#sec:getting_input_from_the_build
+        * https://docs.gradle.org/5.5.1/userguide/custom_plugins.html#sec:getting_input_from_the_build
         */
         project.task('helloWorld') {
             group = "Greeting"
@@ -41,7 +41,7 @@ class GreetingModule {
         /*
         * A task using a project property for configuration.
         * Reference:
-        * https://docs.gradle.org/4.6/userguide/build_environment.html#sec:gradle_configuration_properties
+        * https://docs.gradle.org/5.5.1/userguide/build_environment.html#sec:gradle_configuration_properties
         */
         project.task('helloTarget') {
             group = "Greeting"
