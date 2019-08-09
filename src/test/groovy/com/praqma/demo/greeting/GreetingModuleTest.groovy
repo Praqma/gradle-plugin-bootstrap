@@ -67,7 +67,7 @@ class GreetingModuleTest {
         def result = gradle('helloTarget')
 
         assert result.task(":helloTarget").outcome == SUCCESS
-        assert result.output.contains("Hello, user!")
+        assert result.output.contains("Hello, default-user!")
     }
 
     @Test
